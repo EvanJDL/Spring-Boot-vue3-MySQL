@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+      <!-- 这个是 Vue 挂载的地方 -->
+    <div id="app">
+        <table border="1">
+            <thead>
+              <tr>
+                <th>文章标题</th>
+                <th>分类</th>
+                <th>发表时间</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(article,index) in articleList">
+                <td>{{article.title}}</td>
+                <td>{{article.category}}</td>
+                <td>{{article.time}}</td>
+                <td>{{article.state}}</td>                
+                <td><button>编辑</button> <button>删除</button></td>
+              </tr>
+              <!-- <tr>
+                <td>标题2</td>
+                <td>分类2</td>
+                <td>2000-01-01</td>
+                <td>已发布</td>
+                <td><button>编辑</button> <button>删除</button></td>
+              </tr>
+              <tr>
+                <td>标题3</td>
+                <td>分类3</td>
+                <td>2000-01-01</td>
+                <td>已发布</td>
+                <td><button>编辑</button> <button>删除</button></td>
+              </tr> -->
+            </tbody>
+          </table>
+    </div>
+
+    
+      
+
+    <!-- 引入 vue 模块 -->
+    <script type="module">
+        import { createApp } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js';
+
+        createApp({
+            data() {
+                return {
+                    // 定义数据
+                    articleList: [
+                    {
+                        title: "医疗反腐绝非针对医护收入",
+                        category: "时事",
+                        time: "2023-09-5",
+                        state: "已发布"
+                    },
+                    {
+                        title: "中国男篮输伊朗一败涂地！",
+                        category: "体育",
+                        time: "2023-09-5",
+                        state: "已发布"
+                    },
+                    {
+                        title: "华山景区已受大风影响暂停开放 预计未来24小时将持续",
+                        category: "旅游",
+                        time: "2023-09-5",
+                        state: "已发布"
+                    }
+                    ]
+                }
+            }
+
+        }).mount("#app");
+    </script>
+</body>
+
+</html>
