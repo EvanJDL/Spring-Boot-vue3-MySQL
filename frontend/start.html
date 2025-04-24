@@ -9,6 +9,25 @@
 
       <!-- 这个是 Vue 挂载的地方 -->
     <div id="app">
+
+      Name:<input type="text" v-model="information.name"><span>{{information.name}}</span>
+      Age:<input type="text" v-model="information.age"><span>{{information.age}}</span>
+
+      <br>
+      <button v-on:click="buttonOne">buttonOne</button>
+      <button @click="clear">clear</button>
+
+
+      <p>price: <span v-if="customer.level>=0 && customer.level<=1">{{ customer.name }} :10</span> 
+                <span v-else-if="customer.level>=2 && customer.level<=3">{{ customer.name }} :20</span> 
+                <span v-else="customer.level>=4 && customer.level<=5">{{ customer.name }} :30</span></p>
+      <br>
+      <p>price: <span v-show="customer.level>=0 && customer.level<=1">{{ customer.name }} :10</span> 
+        <span v-show="customer.level>=2 && customer.level<=3">{{ customer.name }} :20</span> 
+        <span v-show="customer.level>=4 && customer.level<=5">{{ customer.name }} :30</span></p>
+      <br>
+        <!-- <a v-bind:href="url" target="_blank">youtube</a> -->
+        <a :href="url" target="_blank">youtube</a>
         <table border="1">
             <thead>
               <tr>
@@ -54,7 +73,14 @@
 
         createApp({
             data() {
-                return {
+                return {                  
+                  information:{
+                    name:"",
+                    age:""
+                  },
+                    
+
+                    url:"https://www.youtube.com",
                     // 定义数据
                     articleList: [
                     {
@@ -75,9 +101,26 @@
                         time: "2023-09-5",
                         state: "已发布"
                     }
-                    ]
+                    ],
+                    customer:{
+                      name:'Tom',
+                      level:2
+                    }
                 }
+            },
+            methods:{
+              buttonOne: function(){
+                alert('button One');
+              },
+              clear: function(){
+                this.information.name='',
+                this.information.age=''
+              }
+            },
+            mounted:function(){
+              console.log("mounted complete");
             }
+        
 
         }).mount("#app");
     </script>
